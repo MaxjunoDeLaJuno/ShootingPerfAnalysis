@@ -3,9 +3,6 @@
 set -e
 SCRIPT_DIR=$(dirname $0)
 
-# #Création du dossier pour contenir les iso locaux avant upload :
-# mkdir -p "$SCRIPT_DIR/isos"
-
 # Pour checker si c'est la première fois que l'user execute le script
 if [ ! -d "$SCRIPT_DIR/.venv" ]; then
   python3 -m venv $SCRIPT_DIR/.venv
@@ -25,3 +22,5 @@ fi
 python $SCRIPT_DIR/app.py
 
 deactivate
+
+# Merci pour le script @Maxxavec2x 🙏

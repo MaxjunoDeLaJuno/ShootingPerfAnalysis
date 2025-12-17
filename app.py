@@ -7,19 +7,37 @@ Goal :
 - Compare each shooting sessions performances
 - Display data with a graphical interface
 """
-
 import sys
 from datetime import datetime
 
 import pandas as p
 from dash import Dash, dcc, html
 
+import sqlite3
+from flask import g
 
+sys.path.append("./src")
+import ShootingPerf, ShootingSession
+
+app = Dash(__name__)
 
 CONFIG = {
     "app_name": "ShootingPerfAnalysis",
     "version": "0.1"
 }
+
+DATABASE = f"{CONFIG["app_name"]}.db"
+
+def get_db():
+    if 'db' not in g:
+        g.db = sqlite3.connect(DATABASE)
+        g.db.row_factory = sqlite3.Row
+    return g.db
+
+def close_db(exception=None):
+    db = g.pop("db", None)
+    if db is not None:
+        db.close()
 
 def log(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -33,7 +51,7 @@ def getShootingData():
 def getShootingPerf():
     pass
 
-# write the object <ShootingPerf> in ""
+# save the data <ShootingPerf> in "ShootingPerfAnalysis.db"
 def saveShootingPerf():
     pass
 
@@ -44,8 +62,6 @@ data = (
 
 )
 
-app = Dash(__name__)
-
 # html layout
 app.layout = html.Div(
 
@@ -53,5 +69,6 @@ app.layout = html.Div(
 
 if __name__ == "__main__":
     log(f"starting of {CONFIG['app_name']} v{CONFIG['version']}")
+    
 
     app.run(debug=True) 
