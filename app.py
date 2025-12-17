@@ -68,8 +68,8 @@ app.layout = html.Div(
 )
 
 # # Test for db creation
-# with app.server.app_context():
-#     db = get_db()
+with app.server.app_context():
+    db = get_db()
 
 if __name__ == "__main__":
     log(f"starting of {CONFIG['app_name']} v{CONFIG['version']}")
