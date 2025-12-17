@@ -54,10 +54,4 @@ app.layout = html.Div(
 if __name__ == "__main__":
     log(f"starting of {CONFIG['app_name']} v{CONFIG['version']}")
 
-    success = app.run(debug=True) 
-
-    if success:
-        sys.exit(0)
-    else:
-        sys.exit(1)
-
+    app.run(debug=True) 
