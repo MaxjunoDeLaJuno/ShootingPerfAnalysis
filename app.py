@@ -26,7 +26,7 @@ CONFIG = {
     "version": "0.1"
 }
 
-DATABASE = f"{CONFIG["app_name"]}.db"
+DATABASE = f"./databases/{CONFIG["app_name"]}.db"
 
 def get_db():
     if 'db' not in g:
@@ -66,6 +66,10 @@ data = (
 app.layout = html.Div(
 
 )
+
+# # Test for db creation
+# with app.server.app_context():
+#     db = get_db()
 
 if __name__ == "__main__":
     log(f"starting of {CONFIG['app_name']} v{CONFIG['version']}")
