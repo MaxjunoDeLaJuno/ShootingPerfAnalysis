@@ -1,5 +1,4 @@
 import math
-from datetime import datetime
 class ShootingSession():
     """
         Define a shooting session.
@@ -8,6 +7,7 @@ class ShootingSession():
         - weapon : string
         - grouping_points : [(X,Y),...] (array of tuple of integer)
         - nb_shot_fired : positive integer
+        - date : string
         - caliber (optional) : string
     """
     def __init__(self, distance, weapon, grouping_points=[(0,0)], nb_shot_fired=0, caliber=None, date=None):
