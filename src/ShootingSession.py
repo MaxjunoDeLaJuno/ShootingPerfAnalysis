@@ -1,4 +1,5 @@
 import math
+from datetime import datetime
 class ShootingSession():
     """
         Define a shooting session.
@@ -9,11 +10,12 @@ class ShootingSession():
         - nb_shot_fired : positive integer
         - caliber (optional) : string
     """
-    def __init__(self, distance, weapon, grouping_points=[(0,0)], nb_shot_fired=0, caliber=None):
+    def __init__(self, distance, weapon, grouping_points=[(0,0)], nb_shot_fired=0, caliber=None, date=None):
         self.distance = distance
         self.weapon = weapon
         self.grouping_points = grouping_points
         self.nb_shot_fired = nb_shot_fired
+        self.date = date
         
         # optional attribute
         self.caliber = caliber
@@ -32,6 +34,8 @@ class ShootingSession():
             return "No caliber specified"
         else:
             return self.caliber
+    def get_Date(self):
+        return self.date
         
     #-------- setters ----------
     def set_Distance(self,distance):
@@ -42,8 +46,10 @@ class ShootingSession():
         self.grouping_points = grouping_points
     def set_NbShots(self, nb_shot_fired):
         self.nb_shot_fired = nb_shot_fired
-    def set_caliber(self,caliber):
+    def set_Caliber(self,caliber):
         self.caliber = caliber
+    def set_Date(self,date):
+        self.date = date
 
     """
         Return an array of euclidian distances from the grouping_points of each impact on the target
@@ -64,6 +70,8 @@ class ShootingSession():
             GlobalArray.append(DistArray)
 
         return GlobalArray
+    
+    
+        
 
 
-   
