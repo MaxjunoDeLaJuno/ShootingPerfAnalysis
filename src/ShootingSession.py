@@ -22,7 +22,7 @@ class ShootingSession():
 
     #-------- print shooting session --------
     def printShootingSession(self):
-        print(f"Shooting session {self.date} : {self.distance} m with a {self.weapon}, {self.nb_shot_fired} shot(s) fired")
+        print(f"Shooting session {self.date if self.date else ""} : {self.distance} m with a {self.weapon}, {self.nb_shot_fired} shot(s) fired")
 
     #-------- getters ----------
     def get_Distance(self):
@@ -78,17 +78,17 @@ class ShootingSession():
     """
         Return the average coordinates for each cluster
     """
-    def avg_cluster_points(self, GlobalArray):
-        sum_x = 0
-        sum_y = 0
+    def avg_cluster_points(self, coord_impact):
+        sum_x = 0.0
+        sum_y = 0.0
         tab_res = []
-        for i in range(len(GlobalArray)):
-            for p in GlobalArray[i]:
+        for i in range(len(coord_impact)):
+            for p in coord_impact[i]:
                 sum_x += p[0]
                 sum_y += p[1]
-            tab_res.append([sum_x/len(GlobalArray[i]),sum_y/len(GlobalArray[i])])
-            sum_x = 0
-            sum_y = 0
+            tab_res.append([sum_x/len(coord_impact[i]),sum_y/len(coord_impact[i])])
+            sum_x = 0.0
+            sum_y = 0.0
         
         return tab_res
         

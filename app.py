@@ -47,7 +47,7 @@ def log(message):
 # get an object <ShootingData> from "./src/ShootingSession.py"
 def getShootingData():
     pass
-    
+
 # get an object <ShootingPerf> from "./src/ShootingPerf.py"
 def getShootingPerf():
     pass
@@ -75,8 +75,13 @@ app.layout = html.Div(
 if __name__ == "__main__":
     log(f"starting of {CONFIG['app_name']} v{CONFIG['version']}")
     # Test logic :
-    target_test = ShootingSession(100, "M1903", nb_shot_fired=5)
-    coord_impact = [(1,5),(2,3),(5,2),(1,9),(9,4)]
-    GlobalArray = target_test.DistFromGroupingPoints(coord_impact)
+    # target_test = ShootingSession(100, "M1903", nb_shot_fired=5)
+    # coord_impact = [(1,5),(2,3),(5,2),(1,9),(9,4)]
+    # GlobalArray = target_test.DistFromGroupingPoints(coord_impact)
+    # avg_array = target_test.avg_cluster_points([coord_impact])
 
-    app.run(debug=True) 
+    # target_test.printShootingSession()
+    # print(GlobalArray)
+    # print(avg_array)
+
+    app.run(debug=True)
