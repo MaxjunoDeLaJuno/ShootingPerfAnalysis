@@ -19,7 +19,11 @@ class ShootingSession():
         
         # optional attribute
         self.caliber = caliber
-        
+
+    #-------- print shooting session --------
+    def printShootingSession(self):
+        print(f"Shooting session {self.date} : {self.distance} m with a {self.weapon}, {self.nb_shot_fired} shot(s) fired")
+
     #-------- getters ----------
     def get_Distance(self):
         return self.distance
@@ -29,7 +33,7 @@ class ShootingSession():
         return self.grouping_points
     def get_NbShots(self):
         return self.nb_shot_fired
-    def get_caliber(self):
+    def get_Caliber(self):
         if self.caliber == None:
             return "No caliber specified"
         else:
@@ -71,7 +75,23 @@ class ShootingSession():
 
         return GlobalArray
     
-    
+    """
+        Return the average coordinates for each cluster
+    """
+    def avg_cluster_points(self, GlobalArray):
+        sum_x = 0
+        sum_y = 0
+        tab_res = []
+        for i in range(len(GlobalArray)):
+            for p in GlobalArray[i]:
+                sum_x += p[0]
+                sum_y += p[1]
+            tab_res.append([sum_x/len(GlobalArray[i]),sum_y/len(GlobalArray[i])])
+            sum_x = 0
+            sum_y = 0
+        
+        return tab_res
+        
         
 
 
